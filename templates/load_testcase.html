@@ -1,0 +1,14 @@
+<div  class="row">
+       {% for test in testcases %}
+            <div  class="col s12 m6 l4">
+                <a href="{{test.testcase_slug}}", style="color:#000">
+                    <div class="card hoverable">
+                        <div class="card-content">
+                            <div class="card-title">{{test.Test_Case_Id}}</div>
+                            <p>{{test.Test_Case_Description}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>

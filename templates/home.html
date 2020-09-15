@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content %}
+<br><br>
+<div class="content bg">
+		<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h1 class="black-text center">DashBoard</h1>
+			</div>
+			<div class="col s12 m6 l3 left">
+				<div class="card card-bg black-text">
+                   <div class="card hoverable">
+					<div class="card-content center">
+						<p>Clients<p>
+						<h5>{{clients_no}}</h5>
+					</div>
+                   </div>
+				</div>
+			</div>
+			<div class="col s12 m6 l3 right">
+				<div class="card card-bg black-text">
+                   <div class="card hoverable">
+					<div class="card-content center">
+						<p>Modules</p>
+						<h5>{{modules_no}}</h5>
+					</div>
+                   </div>
+				</div>
+			</div>
+        </div>
+        </div>
+</div>
+
+<br><br>
+<form method="post" id="modelForm" data-clients-url="{% url 'ajax_load_clients' %}">
+    {% csrf_token %}
+<select id="modules" class="browser-default custom-select">
+
+  <option selected>--select module--</option>
+     {% for module in modules %}
+  <option value="{{ module.pk }}">{{ module.module_name }}</option>
+    {% endfor %}
+</select>
+<br><br>
+<select id="clients" class="browser-default custom-select">
+
+
+</select>
+<br><br>
+
+ <input id="button1" type="button" class="btn btn-success" value="Load Data" />
+ </body>
+
+</form>
+<br><br>
+<div class="conatiner">
+<p id="paragraph" data-testcases-url="{% url 'load_testcases' %}"></p>
+</div>
+<br><br>
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+        $("#modules").change(function () {
+          var url= $("#modelForm").attr("data-clients-url");
+          var moduleId=$(this).val();
+          $.ajax({
+          url:url,
+          data:{
+          'module':moduleId
+          },
+          success:function(data){
+          $("#clients").html(data);
+         }
+        });
+        });
+
+    </script>
+
+<script>
+    $(document).ready(function(){
+
+    $('#button1').click(function(){
+        var url= $("#paragraph").attr("data-testcases-url");
+       var clientId=$('#clients :selected').val();
+        console.log(clientId);
+        $.ajax({
+          url:url,
+          data:{
+          'client':clientId
+          },
+          success:function(data){
+           $("#paragraph").html(data);
+         }
+
+     });
+    });
+   });
+    </script>
+
+
+
+{% endblock %}

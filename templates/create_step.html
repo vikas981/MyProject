@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+ {% block title %} Create New Step {% endblock %}
+{% block content %}
+
+<form method="post">
+
+    <div class="col-lg-6 mx-auto border border-info rounded p-3 m-3">
+         <p class="alert alert-info">Add Step</p>
+        {% csrf_token %}
+        {{form.as_p}}
+        <div class="form-group">
+        <button type="submit" class="btn form-control btn-success" name="button">Add</button>
+        </div>
+    </div>
+
+</form>
+
+
+{% endblock %}

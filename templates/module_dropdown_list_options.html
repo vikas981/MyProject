@@ -1,0 +1,4 @@
+<option value="">--select client--</option>
+{% for client in clients %}
+<option value="{{ client.pk }}">{{ client.client_name }}</option>
+{% endfor %}
