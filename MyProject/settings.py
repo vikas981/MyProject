@@ -80,8 +80,8 @@ DATABASES = {
         'NAME':  'ddbuk00en6o17t',
         'USER': 'prpkzdwdlylcmz',
         'PASSWORD': 'aacffd5e3d6aee7ba4142a3e1d2fe83e4d1a892224d7bfc281ff22c5bb76ac65',
-        'HOST': 'postgres://prpkzdwdlylcmz:aacffd5e3d6aee7ba4142a3e1d2fe83e4d1a892224d7bfc281ff22c5bb76ac65@ec2-54-157-234-29.compute-1.amazonaws.com:5432/ddbuk00en6o17t',
-        'PORT': '5432',
+        'HOST': 'ec2-54-157-234-29.compute-1.amazonaws.com',
+        'PORT': '5432'
     }
 }
 import dj_database_url
